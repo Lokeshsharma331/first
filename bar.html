@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="d3.min.js"></script>
+<style type="text/css">
+.container{
+  display: flex;
+  justify-content: center;
+}
+#charting{
+
+  background-color: grey;
+}
+.bar{
+   fill: blue;
+   text-anchor:end;
+
+}
+.container{
+      background-color: gray;
+      border: 1px solid black;
+      padding: 10px;
+}
+.bar-label{
+      fill:white;
+      text-anchor:end;
+      font-size: 50px;
+
+}
+.axis path,.axis line{
+      fill:none;
+      stroke:#000;
+      shape-rendering:crispEdges;
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+
+</div>
+<script>
+
+ var data=[
+   {key:'FE',value:60},
+    {key:'SE',value:45},
+     {key:'TE',value:58},
+      {key:'BE',value:75}
+ ];
+var svg=d3.select('body .container').append('svg').attr('height',function(){
+      return (window.innerHeight)/2;
+}).attr('width',function(){
+     return (window.innerWidth)/2;
+});
+ var height=window.innerHeight/2-80;
+  var x=d3.scale.linear()
+          .domain([0,d3.max(data,function(d){
+            return d.value;
+          })])
+          .range([0,window.innerWidth/2-80]);
+          var y=d3.scale.ordinal()
+                  .domain(data.map(function(entry){
+                    return entry.key;
+                  }))
+                  .rangeBands([0,window.innerHeight/2-80]);
+var ordcolscale=d3.scale.category20();
+ var chart=svg.append('g').attr("transform",'translate(40,40)');
+  var xaxis =d3.svg.axis()
+                    .scale(x)
+                   .orient("bottom");
+                   var yaxis =d3.svg.axis()
+                                     .scale(y)
+                                    .orient("left");
+    function plot(params) {
+
+     this.selectAll('.bar')
+          .data(params.data)
+          .enter()
+
+          .append("rect")
+          .classed('bar',true)
+
+          .attr('x',0)
+          .attr('y',function(d,i){
+          return  y(d.key);
+          })
+          .attr('width',function(d,i){
+             return x(d.value);
+          })
+          .attr('height',function(d,i){
+              return y.rangeBand()-1;
+          })
+          .style("fill",function(d,i){
+            return ordcolscale(i);
+          })
+       this.selectAll('.bar-label')
+          .data(params.data)
+          .enter()
+          .append('text')
+          .classed('bar-label',true)
+          .attr('x',function (d,i) {
+             return x(d.value);
+          })
+          .attr('dx',function(){
+            return -4;
+          })
+          .attr('y',function(d,i){
+          return  y(d.key);
+        })
+         .attr('dy',function(d,i){
+             return y.rangeBand()/1.5;
+         })
+         .text(function (d,i) {
+            return d.value;
+
+         })
+         this.append('g').attr("transform","translate("+0+","+height+")")
+                         .classed('x axis',true)
+                         .call(xaxis);
+                         this.append('g').attr("transform","translate(0,0)")
+                          .classed('y axis',true)
+                                         .call(yaxis);
+    }
+
+  plot.call(chart,{
+     data:data
+  });
+ window.addEventListener("resize",function(e){
+
+     x.range([0,(e.target.innerWidth)/2]);
+     y.rangeBands([0,(e.target.innerHeight)/2]);
+     d3.select('.container svg').attr('width',function(){
+          return (e.target.innerWidth)/2;
+     })
+     .attr('height',function(){
+          return (e.target.innerHeight)/2;
+     });
+
+     d3.select('svg').selectAll('.bar')
+     .attr('x',0)
+     .attr('y',function(d,i){
+       console.log(y(d.key));
+     return  y(d.key);
+     })
+     .attr('width',function(d,i){
+        return x(d.value);
+     })
+     .attr('height',function(d,i){
+         return y.rangeBand()-1;
+     });
+     d3.select('svg').selectAll('.bar-label')
+        .attr('x',function (d,i) {
+           return x(d.value);
+        })
+        .attr('dx',function(){
+          return -4;
+        })
+        .attr('y',function(d,i){
+        return  y(d.key);
+      })
+       .attr('dy',function(d,i){
+           return y.rangeBand()/1.5;
+       })
+
+ })
+
+
+
+
+
+</script>
+
+</body>
+</html>
