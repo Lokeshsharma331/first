@@ -1,5 +1,4 @@
 this is my first git project.
 something is changed.
 working directory to be staging and after the commiting to repository.
-lokesh
-sharma
+
