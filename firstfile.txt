@@ -3,3 +3,4 @@ something is changed.
 working directory to be staging and after the commiting to repository.
 lokesh
 sharma
+git reset add resources.html
