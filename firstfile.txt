@@ -1,6 +1,4 @@
-
 this is my first git project.
 something is changed.
-git reset HEAD filename
-working directory to be staging and after the commiting to repository
+working directory to be staging and after the commiting to repository.
 
