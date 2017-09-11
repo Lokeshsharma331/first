@@ -1,0 +1,51 @@
+<html>
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.17/c3.min.css" rel="stylesheet" type="text/css">
+   <script src="d3.v3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.17/c3.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+  
+</head>
+<body>
+ <div id="chart"></div>
+ <input type="submit" id='btn'></input>
+  <script>
+  var a=['data1',200,100,400,150,250]
+  var chart = c3.generate({
+    bindto: '#chart',
+    data: {
+    x: 'x',
+      columns: [
+         a,
+        ['x', 'fdcvb','sdvsd','sbs','ukuiu' ],
+      ],
+      type:'bar'
+    },
+     bar:{
+      width:{
+       ratio:0.5
+       }
+       },
+     axis: {
+        x: {
+            type: 'category',
+            tick: {
+                count: 4,
+                
+            }
+        }
+    }
+});
+  $('#btn').click(function(){
+   console.log("sdm");
+    chart.load({
+        columns: [
+            ['data3', 130, 120, 150, 140, 160, 150],
+            ['data4', 30, 20, 50, 40, 60, 50],
+        ],
+        unload: ['data1'],
+    });
+  });
+  </script>
+</body>
+</html>
