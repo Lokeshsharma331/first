@@ -1,0 +1,3 @@
+sudo find / -name '*pandas*' -type f  
+scp ~/Documents/terminal.txt student@10.11.5.56:~
+sudo yum install python-pip.noarch 
