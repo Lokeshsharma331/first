@@ -1,3 +1,9 @@
-sudo find / -name '*pandas*' -type f  
+sudo find / -name '*pandas*' -type f  //search in root 
 scp ~/Documents/terminal.txt student@10.11.5.56:~
-sudo yum install python-pip.noarch 
+hexdump -C /dev/urandom | grep '1337'
+cat file.txt /dev/null
+find ~ -name "*.html"//search file
+grep -i 'sudo' terminal.txt
+sudo apt-get install python-pip3
+pwd
+
