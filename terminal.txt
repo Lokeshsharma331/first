@@ -7,3 +7,8 @@ grep -i 'sudo' terminal.txt
 sudo apt-get install python-pip3
 pwd
 
+
+traceroute http://
+lspci
+
+netstat --------active internet connections
