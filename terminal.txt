@@ -10,5 +10,5 @@ pwd
 
 traceroute http://
 lspci
-
 netstat --------active internet connections
+
